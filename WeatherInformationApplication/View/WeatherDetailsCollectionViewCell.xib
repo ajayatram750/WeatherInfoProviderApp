@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WeatherDetailsCollectionViewCell" id="gTV-IL-0wX" customClass="WeatherDetailsCollectionViewCell" customModule="WeatherInformationApplication" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="160" height="101"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="160" height="101"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gbN-aa-Ba8">
+                        <rect key="frame" x="9" y="69" width="142" height="28"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J8V-9U-WVR">
+                        <rect key="frame" x="9" y="9" width="142" height="53"/>
+                        <color key="backgroundColor" red="0.98039215690000003" green="0.88235294119999996" blue="0.44705882349999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="53" id="jHH-6r-3vQ"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <color key="backgroundColor" red="0.71764705880000002" green="0.76862745099999996" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="gbN-aa-Ba8" secondAttribute="trailing" constant="9" id="5PT-Dl-nm4"/>
+                <constraint firstItem="gbN-aa-Ba8" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="9" id="Uug-KQ-cVj"/>
+                <constraint firstItem="J8V-9U-WVR" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="9" id="Wiy-WU-o0V"/>
+                <constraint firstItem="gbN-aa-Ba8" firstAttribute="top" secondItem="J8V-9U-WVR" secondAttribute="bottom" constant="7" id="efg-Gv-onn"/>
+                <constraint firstAttribute="trailing" secondItem="J8V-9U-WVR" secondAttribute="trailing" constant="9" id="hF2-DZ-f4s"/>
+                <constraint firstItem="J8V-9U-WVR" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="9" id="pfh-VT-gFI"/>
+                <constraint firstAttribute="bottom" secondItem="gbN-aa-Ba8" secondAttribute="bottom" constant="4" id="yxQ-dN-Cxn"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="180" height="114"/>
+            <connections>
+                <outlet property="subjectLabel" destination="gbN-aa-Ba8" id="u5b-3D-Wij"/>
+                <outlet property="subjectValueLabel" destination="J8V-9U-WVR" id="Uhc-By-Far"/>
+            </connections>
+            <point key="canvasLocation" x="32" y="116.5"/>
+        </collectionViewCell>
+    </objects>
+</document>
