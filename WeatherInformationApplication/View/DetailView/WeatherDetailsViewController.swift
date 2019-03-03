@@ -42,27 +42,7 @@ class WeatherDetailsViewController: UIViewController {
         self.getAddressFromLatLon(latitude:self.latitude ?? "", withLongitude:self.longitude ?? "")
         
         // Call Get Weather webservice
-        self.getWeatherInformationWebserviceCall()
-    }
-    
-    // MARK: - Webservice Calls
-    
-    // This method used for calling Weather Information Webservice Call
-    func getWeatherInformationWebserviceCall() {
-        
-        self.showActivityIndicator()
-        let urlString = String(format: "https://api.openweathermap.org/data/2.5/weather?lat=%@&lon=%@&APPID=db98ccbb9bd290454acb708501e30097",latitude ?? "",longitude ?? "" )
-        ServiceManager.shared().getWeatherDetailsWebServiceCall(urlString: urlString) { (responseData, error) in
-            DispatchQueue.main.async {
-                self.hideActivityIndicator()
-            }
-            if let errorMessage = error{//Show Error Alert
-                self.showAlert(title: "Error", message: errorMessage)
-            }
-            if let weatherDetails = responseData{//Success & show data
-                self.reloadCollectionViewWithData(weatherDetails)
-            }
-        }
+        self.getWeatherInformationCall()
     }
     
     // This method used for getting Address from latitude & Longitude
@@ -92,6 +72,27 @@ class WeatherDetailsViewController: UIViewController {
         self.weatherInfoDataArray.add(self.longitude ?? "")
         DispatchQueue.main.async {
             self.weatherInfocollectionView.reloadData()
+        }
+    }
+    
+    // MARK: - Webservice Calls
+    
+    // This method used for calling Weather Information Webservice Call
+    func getWeatherInformationCall() {
+        
+        //self.showActivityIndicator()
+        let urlString = String(format: "https://api.openweathermap.org/data/2.5/weather?lat=%@&lon=%@&APPID=db98ccbb9bd290454acb708501e30097",latitude ?? "",longitude ?? "" )
+        
+        WeatherBusinessManager.shared.getWeatherInformationWebserviceCall(url: urlString) { (weatherData, error) in
+            DispatchQueue.main.async {
+                self.hideActivityIndicator()
+            }
+            if let errorMessage = error{//Show Error Alert
+                self.showAlert(title: "Error", message: errorMessage)
+            }
+            if let weatherDetails = weatherData{//Success & show data
+                self.reloadCollectionViewWithData(weatherDetails)
+            }
         }
     }
 }

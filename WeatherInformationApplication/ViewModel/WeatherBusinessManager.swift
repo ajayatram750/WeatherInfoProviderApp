@@ -13,6 +13,7 @@ class WeatherBusinessManager {
     static let shared = WeatherBusinessManager()
     private init(){}
     
+    // This method used for handling Geo Response and pass the data to the view
     func handleGeoResponse(_ placemarks: [CLPlacemark]?) -> String{
         
         var addressString = ""
@@ -35,5 +36,18 @@ class WeatherBusinessManager {
             }
         }
         return addressString
+    }
+    
+    // This method used for getting Weather Information Webservice Call response and pass the data to the view
+    func getWeatherInformationWebserviceCall(url:String, completion:@escaping (_ response: WeatherDetailsModel?,_ errorMessage :String?) -> Void)  {
+        ServiceManager.shared().getWeatherDetailsWebServiceCall(urlString: url) { (responseData, error) in
+            if let errorMessage = error{//Show Error Alert
+                completion(nil,errorMessage)
+                return
+            }
+            if let weatherDetails = responseData  {//Success & show data
+                completion(weatherDetails,nil)
+            }
+        }
     }
 }
