@@ -134,11 +134,11 @@
 		861ECEB72226B90B00D0FB39 /* WeatherInformationApplication */ = {
 			isa = PBXGroup;
 			children = (
-				4BDD54622227A90B00989A7A /* View */,
-				861ECEEE2226B9C400D0FB39 /* ModelClasses */,
-				861ECEE92226B96700D0FB39 /* ViewControllers */,
-				861ECEE62226B92100D0FB39 /* NetworkClasses */,
 				861ECEB82226B90B00D0FB39 /* AppDelegate.swift */,
+				4BDD54622227A90B00989A7A /* View */,
+				861ECEEE2226B9C400D0FB39 /* Model */,
+				861ECEE92226B96700D0FB39 /* ViewModel */,
+				861ECEE62226B92100D0FB39 /* NetworkManager */,
 				86E616722226D7FC0023E35C /* Utility.swift */,
 				86E616742226D8E00023E35C /* Constant.swift */,
 				861ECEBC2226B90B00D0FB39 /* Main.storyboard */,
@@ -167,29 +167,29 @@
 			path = WeatherInformationApplicationUITests;
 			sourceTree = "<group>";
 		};
-		861ECEE62226B92100D0FB39 /* NetworkClasses */ = {
+		861ECEE62226B92100D0FB39 /* NetworkManager */ = {
 			isa = PBXGroup;
 			children = (
 				861ECEE72226B96000D0FB39 /* ServiceManager.swift */,
 			);
-			path = NetworkClasses;
+			path = NetworkManager;
 			sourceTree = "<group>";
 		};
-		861ECEE92226B96700D0FB39 /* ViewControllers */ = {
+		861ECEE92226B96700D0FB39 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				861ECEF12226BADB00D0FB39 /* HomeViewController.swift */,
 				861ECEEF2226BAC800D0FB39 /* WeatherDetailsViewController.swift */,
 			);
-			path = ViewControllers;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		861ECEEE2226B9C400D0FB39 /* ModelClasses */ = {
+		861ECEEE2226B9C400D0FB39 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				86E616702226C8030023E35C /* WeatherDetailsModel.swift */,
 			);
-			path = ModelClasses;
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
