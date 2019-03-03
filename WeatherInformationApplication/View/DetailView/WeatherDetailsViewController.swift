@@ -39,7 +39,7 @@ class WeatherDetailsViewController: UIViewController {
         self.weatherInfocollectionView?.register(nib, forCellWithReuseIdentifier: "WeatherDetailsCollectionViewCell")
         
         // Get address from lat & lon
-        self.getAddressFromLatLon(latitude:self.latitude!, withLongitude:self.longitude!)
+        self.getAddressFromLatLon(latitude:self.latitude ?? "", withLongitude:self.longitude ?? "")
         
         // Call Get Weather webservice
         self.getWeatherInformationWebserviceCall()
@@ -51,7 +51,7 @@ class WeatherDetailsViewController: UIViewController {
     func getWeatherInformationWebserviceCall() {
         
         self.showActivityIndicator()
-        let urlString = String(format: "https://api.openweathermap.org/data/2.5/weather?lat=%@&lon=%@&APPID=db98ccbb9bd290454acb708501e30097",latitude!,longitude! )
+        let urlString = String(format: "https://api.openweathermap.org/data/2.5/weather?lat=%@&lon=%@&APPID=db98ccbb9bd290454acb708501e30097",latitude ?? "",longitude ?? "" )
         ServiceManager.shared().getWeatherDetailsWebServiceCall(urlString: urlString) { (responseData, error) in
             DispatchQueue.main.async {
                 self.hideActivityIndicator()
@@ -59,7 +59,7 @@ class WeatherDetailsViewController: UIViewController {
             if let errorMessage = error{//Show Error Alert
                 self.showAlert(title: "Error", message: errorMessage)
             }
-            if let weatherDetails = responseData{
+            if let weatherDetails = responseData{//Success & show data
                 self.reloadCollectionViewWithData(weatherDetails)
             }
         }
@@ -79,15 +79,15 @@ class WeatherDetailsViewController: UIViewController {
     }
     
     // This method is used for reloading waether data 
-    func reloadCollectionViewWithData(_ data:WeatherDetailsModel){
+    func reloadCollectionViewWithData(_ data: WeatherDetailsModel?){
         
         self.weatherInfoDataArray.removeAllObjects()
-        self.weatherInfoDataArray.add(data.name ?? "")
-        self.weatherInfoDataArray.add(String(data.main?.temp ?? 0))
-        self.weatherInfoDataArray.add(String(data.main?.tempMin ?? 0))
-        self.weatherInfoDataArray.add(String(data.main?.tempMax ?? 0))
-        self.weatherInfoDataArray.add(String(data.main?.humidity ?? 0))
-        self.weatherInfoDataArray.add(String(data.main?.pressure ?? 0))
+        self.weatherInfoDataArray.add(data?.name ?? "")
+        self.weatherInfoDataArray.add(String(data?.main?.temp ?? 0))
+        self.weatherInfoDataArray.add(String(data?.main?.tempMin ?? 0))
+        self.weatherInfoDataArray.add(String(data?.main?.tempMax ?? 0))
+        self.weatherInfoDataArray.add(String(data?.main?.humidity ?? 0))
+        self.weatherInfoDataArray.add(String(data?.main?.pressure ?? 0))
         self.weatherInfoDataArray.add(self.latitude ?? "")
         self.weatherInfoDataArray.add(self.longitude ?? "")
         DispatchQueue.main.async {
