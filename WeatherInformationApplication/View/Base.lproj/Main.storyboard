@@ -183,6 +183,10 @@
                                         <size key="customSize" width="160" height="101"/>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="baI-UN-jlw" id="OZ4-Ty-uJk"/>
+                                    <outlet property="delegate" destination="baI-UN-jlw" id="u7Z-od-14i"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -69,13 +69,12 @@ class WeatherDetailsViewController: UIViewController {
     func getAddressFromLatLon(latitude: String, withLongitude longitude: String) {
         
         let geo = CLGeocoder()
-        
         geo.reverseGeocodeLocation(CLLocation(latitude: Double("\(latitude)") ?? 0.0, longitude: Double("\(longitude)") ?? 0.0), completionHandler:
             {(placemarks, error) in
                 if error != nil {
                     print("reverse geodcode fail: \(error!.localizedDescription)")
                 }
-                //Add ViewModel Class
+                self.addressDetailLabel.text = WeatherBusinessManager.shared.handleGeoResponse(placemarks)
         })
     }
     
@@ -106,7 +105,7 @@ extension WeatherDetailsViewController : UICollectionViewDataSource{
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.subjectItems.count //return number of rows in section
+        return self.finalDataArray.count //return number of rows in section
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
