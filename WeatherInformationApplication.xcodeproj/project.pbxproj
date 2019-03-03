@@ -109,6 +109,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		4B496519222BAD8700E2BD30 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				86E616742226D8E00023E35C /* Constant.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
 		4BDD54622227A90B00989A7A /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,9 +153,9 @@
 				4BDD54622227A90B00989A7A /* View */,
 				861ECEEE2226B9C400D0FB39 /* Model */,
 				861ECEE92226B96700D0FB39 /* ViewModel */,
+				4B496519222BAD8700E2BD30 /* Support */,
 				4B496515222BAAFD00E2BD30 /* Extensions */,
 				861ECEE62226B92100D0FB39 /* NetworkManager */,
-				86E616742226D8E00023E35C /* Constant.swift */,
 				861ECEBC2226B90B00D0FB39 /* Main.storyboard */,
 				861ECEBF2226B90D00D0FB39 /* Assets.xcassets */,
 				861ECEC12226B90D00D0FB39 /* LaunchScreen.storyboard */,
