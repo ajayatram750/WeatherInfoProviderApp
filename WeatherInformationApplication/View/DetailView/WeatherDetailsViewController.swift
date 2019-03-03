@@ -60,7 +60,7 @@ class WeatherDetailsViewController: UIViewController {
                 self.showAlert(title: "Error", message: errorMessage)
             }
             if let weatherDetails = responseData{
-                self.reloadCollectionViewWithData(data: weatherDetails)
+                self.reloadCollectionViewWithData(weatherDetails)
             }
         }
     }
@@ -79,7 +79,7 @@ class WeatherDetailsViewController: UIViewController {
     }
     
     // This method is used for reloading waether data 
-    func reloadCollectionViewWithData(data:WeatherDetailsModel){
+    func reloadCollectionViewWithData(_ data:WeatherDetailsModel){
         
         self.weatherInfoDataArray.removeAllObjects()
         self.weatherInfoDataArray.add(data.name ?? "")

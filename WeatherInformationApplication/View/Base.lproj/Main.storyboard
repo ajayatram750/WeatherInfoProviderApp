@@ -31,13 +31,13 @@
         <!--Home View Controller-->
         <scene sceneID="NJm-8X-jE7">
             <objects>
-                <viewController id="9a8-Aw-sGL" customClass="HomeViewController" customModule="WeatherInformationApplication" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" id="9a8-Aw-sGL" customClass="HomeViewController" customModule="WeatherInformationApplication" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7cD-Pa-bMC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kbe-aK-kWH">
-                                <rect key="frame" x="46.5" y="108" width="281.5" height="30"/>
+                                <rect key="frame" x="47" y="108" width="281" height="30"/>
                                 <color key="backgroundColor" red="0.98039215690000003" green="0.88235294119999996" blue="0.44705882349999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Get Lat &amp; Long From City Name">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -47,16 +47,16 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eLw-Lp-Q9I">
-                                <rect key="frame" x="46.5" y="146" width="281.5" height="0.0"/>
+                                <rect key="frame" x="47" y="146" width="281" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="1" green="0.13712393637846643" blue="0.32128658719413195" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zj1-TO-jtO">
-                                <rect key="frame" x="46.5" y="165.5" width="281.5" height="200"/>
+                                <rect key="frame" x="47" y="165.5" width="281" height="200"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Longitude" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="93h-Ei-H8C">
-                                        <rect key="frame" x="14" y="111" width="253.5" height="30"/>
+                                        <rect key="frame" x="14" y="111" width="253" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
@@ -65,7 +65,7 @@
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Latitude" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="CNB-KJ-aVe">
-                                        <rect key="frame" x="14" y="66" width="253.5" height="30"/>
+                                        <rect key="frame" x="14" y="66" width="253" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
@@ -74,7 +74,7 @@
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ae9-g6-bNG">
-                                        <rect key="frame" x="14" y="156" width="253.5" height="30"/>
+                                        <rect key="frame" x="14" y="156" width="253" height="30"/>
                                         <color key="backgroundColor" red="0.35666102170000002" green="0.73338097329999996" blue="0.94105881449999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Get Weather Details">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -99,7 +99,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Latitude &amp; Longitude" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ucn-UD-sMh">
-                                <rect key="frame" x="46.5" y="181.5" width="281.5" height="24"/>
+                                <rect key="frame" x="47" y="181.5" width="281" height="24"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
