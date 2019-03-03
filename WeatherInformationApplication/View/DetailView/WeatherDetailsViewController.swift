@@ -52,7 +52,7 @@ class WeatherDetailsViewController: UIViewController {
         geo.reverseGeocodeLocation(CLLocation(latitude: Double("\(latitude)") ?? 0.0, longitude: Double("\(longitude)") ?? 0.0), completionHandler:
             {(placemarks, error) in
                 if error != nil {
-                    print("reverse geodcode fail: \(error!.localizedDescription)")
+                    print("Geodcode fail: \(error!.localizedDescription)")
                 }
                 self.addressDetailLabel.text = WeatherBusinessManager.shared.handleGeoResponse(placemarks)
         })

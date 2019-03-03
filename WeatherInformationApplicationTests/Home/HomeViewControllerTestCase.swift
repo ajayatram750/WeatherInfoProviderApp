@@ -16,19 +16,18 @@ class HomeViewControllerTestCase: XCTestCase {
     override func setUp() {
         
         super.setUp()
-        let sb = UIStoryboard.init(name: "Main", bundle: nil)
-        if let v = sb.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController {
-            vc = v
+        let mainSB = UIStoryboard.init(name: "Main", bundle: nil)
+        if let homeViewVC = mainSB.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController {
+            vc = homeViewVC
             _ = vc?.view
             XCTAssertNotNil(vc?.viewWillAppear(true))
             XCTAssertEqual(vc?.title, "Home")
             XCTAssertTrue(vc?.errorLabelForLatLon.isHidden ?? false)
         }
-        // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     
+    //Check City Input and handle geo response
     func testGetWeatherDetailsButtonClicked() {
-        
         vc?.getWeatherDetailsButtonClicked(UIButton())
         vc?.latitudeTextField.text = "latitudeTextField"
         vc?.longitudeTextField.text = "longitudeTextField"
@@ -45,8 +44,8 @@ class HomeViewControllerTestCase: XCTestCase {
         
     }
     
+    //Check Textfield input
     func testMyTextField_ShouldAllowAlphabeticCharacters() {
-        // Call through field.delegate, not through vc
         if let result = vc?.textField((vc?.latitudeTextField)!, shouldChangeCharactersIn: NSMakeRange(0, 1), replacementString: "a") {
             XCTAssertFalse(result)
         }
