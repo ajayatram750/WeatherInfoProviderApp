@@ -117,11 +117,31 @@
 			path = Support;
 			sourceTree = "<group>";
 		};
+		4B49651A222BAE1700E2BD30 /* DetailView */ = {
+			isa = PBXGroup;
+			children = (
+				861ECEEF2226BAC800D0FB39 /* WeatherDetailsViewController.swift */,
+				4BDD54672227B6CF00989A7A /* WeatherDetailsCollectionViewCell.swift */,
+				4BDD54682227B6CF00989A7A /* WeatherDetailsCollectionViewCell.xib */,
+			);
+			path = DetailView;
+			sourceTree = "<group>";
+		};
+		4B49651B222BAE2300E2BD30 /* HomeView */ = {
+			isa = PBXGroup;
+			children = (
+				861ECEF12226BADB00D0FB39 /* HomeViewController.swift */,
+			);
+			path = HomeView;
+			sourceTree = "<group>";
+		};
 		4BDD54622227A90B00989A7A /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4BDD54672227B6CF00989A7A /* WeatherDetailsCollectionViewCell.swift */,
-				4BDD54682227B6CF00989A7A /* WeatherDetailsCollectionViewCell.xib */,
+				861ECEBC2226B90B00D0FB39 /* Main.storyboard */,
+				861ECEC12226B90D00D0FB39 /* LaunchScreen.storyboard */,
+				4B49651B222BAE2300E2BD30 /* HomeView */,
+				4B49651A222BAE1700E2BD30 /* DetailView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -156,9 +176,7 @@
 				4B496519222BAD8700E2BD30 /* Support */,
 				4B496515222BAAFD00E2BD30 /* Extensions */,
 				861ECEE62226B92100D0FB39 /* NetworkManager */,
-				861ECEBC2226B90B00D0FB39 /* Main.storyboard */,
 				861ECEBF2226B90D00D0FB39 /* Assets.xcassets */,
-				861ECEC12226B90D00D0FB39 /* LaunchScreen.storyboard */,
 				861ECEC42226B90D00D0FB39 /* Info.plist */,
 			);
 			path = WeatherInformationApplication;
@@ -193,8 +211,6 @@
 		861ECEE92226B96700D0FB39 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				861ECEF12226BADB00D0FB39 /* HomeViewController.swift */,
-				861ECEEF2226BAC800D0FB39 /* WeatherDetailsViewController.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
