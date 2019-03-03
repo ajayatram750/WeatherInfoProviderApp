@@ -13,11 +13,10 @@ class WeatherDetailsCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var subjectLabel: UILabel!
     @IBOutlet weak var subjectValueLabel: UILabel!
     
+    // Initialization code
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         self.subjectValueLabel.layer.cornerRadius = 5.0
         self.subjectValueLabel.layer.masksToBounds = true
     }
-
 }

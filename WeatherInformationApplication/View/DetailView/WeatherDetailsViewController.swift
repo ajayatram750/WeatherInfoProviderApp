@@ -25,13 +25,10 @@ class WeatherDetailsViewController: UIViewController {
     private let reuseIdentifier = "WeatherDetailsCollectionViewCell"
     var subjectItems = ["Location Name","Temparature", "Temp Min", "Temp Max", "Humidity", "Pressure", "Latitude", "Longitude"]
     
-    
     //MARK:- Class life cycle
-    
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
         self.title = "Weather Details"
         
         addressDetailLabel.layer.borderWidth = 1
@@ -46,102 +43,46 @@ class WeatherDetailsViewController: UIViewController {
         
         // Call Get Weather webservice
         self.getWeatherInformationWebserviceCall()
-        
     }
     
     // MARK: - Webservice Calls
     
-    /*
-     Method Name : getWeatherInformationWebserviceCall
-     Purpose     : get Weather Information Webservice Call
-     Paramater   : None
-     Return      : None
-     */
+    // This method used for calling Weather Information Webservice Call
     func getWeatherInformationWebserviceCall() {
         
         self.showActivityIndicator()
-        
         let urlString = String(format: "https://api.openweathermap.org/data/2.5/weather?lat=%@&lon=%@&APPID=db98ccbb9bd290454acb708501e30097",latitude!,longitude! )
-        
         ServiceManager.shared().getWeatherDetailsWebServiceCall(urlString: urlString) { (responseData, error) in
-            
-             DispatchQueue.main.async {
+            DispatchQueue.main.async {
                 self.hideActivityIndicator()
             }
-            
-            if let errorMessage = error{
-                //Show Error Alert
+            if let errorMessage = error{//Show Error Alert
                 self.showAlert(title: "Error", message: errorMessage)
             }
-            
-            guard let weatherDetails = responseData else{return}
-            //self.getAddressFromLatLon(latitude:self.latitude!, withLongitude:self.longitude!)
-            
-            self.reloadCollectionViewWithData(data: weatherDetails)
-            
+            if let weatherDetails = responseData{
+                self.reloadCollectionViewWithData(data: weatherDetails)
+            }
         }
     }
     
-    /*
-     Method Name : getAddressFromLatLon
-     Purpose     : get Address from latitude & Longitude
-     Paramater   : latitude & longitude
-     Return      : None
-     */
+    // This method used for getting Address from latitude & Longitude
     func getAddressFromLatLon(latitude: String, withLongitude longitude: String) {
         
-        var center : CLLocationCoordinate2D = CLLocationCoordinate2D()
-        let lat: Double = Double("\(latitude)")!
-        //21.228124
-        let lon: Double = Double("\(longitude)")!
-        //72.833770
-        let ceo: CLGeocoder = CLGeocoder()
-        center.latitude = lat
-        center.longitude = lon
+        let geo = CLGeocoder()
         
-        let loc: CLLocation = CLLocation(latitude:center.latitude, longitude: center.longitude)
-        
-        
-        ceo.reverseGeocodeLocation(loc, completionHandler:
+        geo.reverseGeocodeLocation(CLLocation(latitude: Double("\(latitude)") ?? 0.0, longitude: Double("\(longitude)") ?? 0.0), completionHandler:
             {(placemarks, error) in
-                if (error != nil)
-                {
+                if error != nil {
                     print("reverse geodcode fail: \(error!.localizedDescription)")
                 }
-                
-                if let pm = placemarks {
-                    
-                    if pm.count > 0 {
-                        
-                        let pm = placemarks![0]
-                        var addressString : String = ""
-                        
-                        if pm.subLocality != nil {
-                            addressString = addressString + pm.subLocality! + ", "
-                        }
-                        if pm.thoroughfare != nil {
-                            addressString = addressString + pm.thoroughfare! + ", "
-                        }
-                        if pm.locality != nil {
-                            addressString = addressString + pm.locality! + ", "
-                        }
-                        if pm.country != nil {
-                            addressString = addressString + pm.country! + ", "
-                        }
-                        if pm.postalCode != nil {
-                            addressString = addressString + pm.postalCode! + " "
-                        }
-                        
-                        self.addressDetailLabel.text = addressString
-                    }
-                }
+                //Add ViewModel Class
         })
     }
     
+    // This method is used for reloading waether data 
     func reloadCollectionViewWithData(data:WeatherDetailsModel){
         
         self.finalDataArray.removeAllObjects()
-        
         self.finalDataArray.add(data.name ?? "")
         self.finalDataArray.add(String(data.main?.temp ?? 0))
         self.finalDataArray.add(String(data.main?.tempMin ?? 0))
@@ -150,17 +91,9 @@ class WeatherDetailsViewController: UIViewController {
         self.finalDataArray.add(String(data.main?.pressure ?? 0))
         self.finalDataArray.add(self.latitude ?? "")
         self.finalDataArray.add(self.longitude ?? "")
-        
         DispatchQueue.main.async {
-            self.weatherInfocollectionView.dataSource = self
             self.weatherInfocollectionView.reloadData()
         }
-    }
-    
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }
 
@@ -168,23 +101,22 @@ class WeatherDetailsViewController: UIViewController {
 extension WeatherDetailsViewController : UICollectionViewDataSource{
     
     //MARK: UICollectionViewDataSource
-    
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        //return number of sections in collection view
-        return 1
+        return 1 //return number of sections in collection view
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //return number of rows in section
-        return self.subjectItems.count
+        return self.subjectItems.count //return number of rows in section
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! WeatherDetailsCollectionViewCell
-        
-        cell.subjectLabel.text = self.subjectItems[indexPath.item]
-        cell.subjectValueLabel.text = self.finalDataArray[indexPath.item] as? String
-        return cell
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as? WeatherDetailsCollectionViewCell {
+            
+            cell.subjectLabel.text = self.subjectItems[indexPath.item]
+            cell.subjectValueLabel.text = self.finalDataArray[indexPath.item] as? String
+            return cell
+        }
+        return WeatherDetailsCollectionViewCell()
     }
 }
