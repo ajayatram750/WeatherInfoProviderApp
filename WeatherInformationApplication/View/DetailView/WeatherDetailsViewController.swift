@@ -19,7 +19,7 @@ class WeatherDetailsViewController: UIViewController {
     var myActivityIndicator = UIActivityIndicatorView()
     var latitude: String?
     var longitude: String?
-    var finalDataArray : NSMutableArray = NSMutableArray()
+    var weatherInfoDataArray : NSMutableArray = NSMutableArray()
     
     //cell identifier in the storyboard
     private let reuseIdentifier = "WeatherDetailsCollectionViewCell"
@@ -81,15 +81,15 @@ class WeatherDetailsViewController: UIViewController {
     // This method is used for reloading waether data 
     func reloadCollectionViewWithData(data:WeatherDetailsModel){
         
-        self.finalDataArray.removeAllObjects()
-        self.finalDataArray.add(data.name ?? "")
-        self.finalDataArray.add(String(data.main?.temp ?? 0))
-        self.finalDataArray.add(String(data.main?.tempMin ?? 0))
-        self.finalDataArray.add(String(data.main?.tempMax ?? 0))
-        self.finalDataArray.add(String(data.main?.humidity ?? 0))
-        self.finalDataArray.add(String(data.main?.pressure ?? 0))
-        self.finalDataArray.add(self.latitude ?? "")
-        self.finalDataArray.add(self.longitude ?? "")
+        self.weatherInfoDataArray.removeAllObjects()
+        self.weatherInfoDataArray.add(data.name ?? "")
+        self.weatherInfoDataArray.add(String(data.main?.temp ?? 0))
+        self.weatherInfoDataArray.add(String(data.main?.tempMin ?? 0))
+        self.weatherInfoDataArray.add(String(data.main?.tempMax ?? 0))
+        self.weatherInfoDataArray.add(String(data.main?.humidity ?? 0))
+        self.weatherInfoDataArray.add(String(data.main?.pressure ?? 0))
+        self.weatherInfoDataArray.add(self.latitude ?? "")
+        self.weatherInfoDataArray.add(self.longitude ?? "")
         DispatchQueue.main.async {
             self.weatherInfocollectionView.reloadData()
         }
@@ -105,7 +105,7 @@ extension WeatherDetailsViewController : UICollectionViewDataSource{
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.finalDataArray.count //return number of rows in section
+        return self.weatherInfoDataArray.count //return number of rows in section
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -113,7 +113,7 @@ extension WeatherDetailsViewController : UICollectionViewDataSource{
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as? WeatherDetailsCollectionViewCell {
             
             cell.subjectLabel.text = self.subjectItems[indexPath.item]
-            cell.subjectValueLabel.text = self.finalDataArray[indexPath.item] as? String
+            cell.subjectValueLabel.text = self.weatherInfoDataArray[indexPath.item] as? String
             return cell
         }
         return WeatherDetailsCollectionViewCell()
